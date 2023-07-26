@@ -15,9 +15,10 @@
 
 //展示的数据源
 @property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSMutableArray *nativeShowViews;
 
 //广告对象数组，需要将每次的广告对象保存好，不然会影响单个广告View事件的回调
-@property (nonatomic, strong) NSMutableArray *nativeAds;
+@property (nonatomic, strong) NSMutableArray *nativeAdModels;
 
 //加载成功个数
 @property (nonatomic, assign) NSInteger loadSuccessCount;
@@ -57,7 +58,8 @@
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     
     self.dataSource = [NSMutableArray array];
-    self.nativeAds = [NSMutableArray array];
+    self.nativeShowViews = [NSMutableArray array];
+    self.nativeAdModels = [NSMutableArray array];
 }
 
 - (void)loadData
@@ -81,7 +83,7 @@
         [self.dataSource addObjectsFromArray:[self generateListData]];
         [self.tableView reloadData];
         
-        if(self.nativeAds.count>0) //从数组中取出广告，插入到数据源中
+        if(self.nativeShowViews.count>0) //从数组中取出广告，插入到数据源中
         {
             [self insertNativeAdToDataSource];
         }else
@@ -152,6 +154,7 @@
     self.nativeAd = [[AdMoreNativeAd alloc] initWithSlotID:kNativeID rootController:[UIApplication sharedApplication].keyWindow.rootViewController adSize:CGSizeMake(HH_SCREEN_WIDTH, 0)];
     self.nativeAd.delegate = self;
     [self.nativeAd loadAdDataWithCount:3];
+    [self.nativeAdModels addObject:self.nativeAd];
 }
 
 #pragma mark ---------------------AdMoreNativeAdDelegate----------------------------
@@ -176,7 +179,7 @@
     SCNewsModel *adModel = [[SCNewsModel alloc] init];
     adModel.nativeAdView = nativeAdView;
     adModel.height = nativeAdView.height;
-    [self.nativeAds addObject:adModel];
+    [self.nativeShowViews addObject:adModel];
     
     //证明加载完毕，可以放入数据源进行刷新
     if(self.loadSuccessCount == self.renderSuccessCount + self.renderFailCount)
@@ -235,7 +238,7 @@
 #pragma mark ---------------------private----------------------------
 - (void)insertNativeAdToDataSource
 {
-    SCNewsModel *newsModel = self.nativeAds.firstObject;
+    SCNewsModel *newsModel = self.nativeShowViews.firstObject;
     if (self.dataSource && self.dataSource.count >0) {
         if(self.dataSource.count > 5)
         {
@@ -245,7 +248,7 @@
             [self.dataSource insertObject:newsModel atIndex:self.dataSource.count - 1];
         }
     }
-    [self.nativeAds removeObject:newsModel];
+    [self.nativeShowViews removeObject:newsModel];
     [self.tableView reloadData];
 }
 
