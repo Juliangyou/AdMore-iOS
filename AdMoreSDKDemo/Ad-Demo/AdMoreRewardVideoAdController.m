@@ -89,6 +89,12 @@
 - (void)rewardedVideoAdPlayStart:(AdMoreRewardVideoAd *)rewardedVideoAd
 {
     NSLog(@"rewardVideo:激励视频开始播放回调");
+    
+    AdMoreAdInfo *adInfo = [self.rewardedVideoAd getAdInfo];
+    NSLog(@"adInfo:adnName:%@",adInfo.adnName);
+    NSLog(@"adInfo:ecpm:%@",adInfo.ecpm);
+    NSLog(@"adInfo:slotID:%@",adInfo.slotID);
+    NSLog(@"adInfo:requestID:%@",adInfo.requestID);
 }
 /**
  奖励验证回调

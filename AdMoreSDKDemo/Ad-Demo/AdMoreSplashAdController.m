@@ -52,6 +52,12 @@
 /// 展示成功回调
 - (void)splashAdWillVisible:(AdMoreSplashAd *)splashAd
 {
+    AdMoreAdInfo *adInfo = [self.splashAd getAdInfo];
+    NSLog(@"adInfo:adnName:%@",adInfo.adnName);
+    NSLog(@"adInfo:ecpm:%@",adInfo.ecpm);
+    NSLog(@"adInfo:slotID:%@",adInfo.slotID);
+    NSLog(@"adInfo:requestID:%@",adInfo.requestID);
+    
     NSLog(@"splashAd:展示成功回调");
 }
 //展示失败

@@ -42,8 +42,8 @@
         }
     }];
 #if DEBUG
+    NSLog(@"SDKVersion：---- %@",[AdMoreSDKManager version]);
     [AdMoreSDKManager openDebugLog:YES];
-    NSLog(@"AdMoreVersion:%@",[AdMoreSDKManager version]);
 #endif
 
     return YES;
@@ -51,11 +51,13 @@
 
 - (void)preLoadAd
 {
+    AdMoreSplashAd *splashed = [[AdMoreSplashAd alloc] initWithSlotID:kSplashID appId:kAppID ritId:kSplahRitID rootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
+    
     AdMoreFullScreenInterstitialAd *interstitialAd = [[AdMoreFullScreenInterstitialAd alloc] initWithSlotID:kFullScreenInterstitialID];
     
-    AdMoreRewardVideoAd *jiFenrewardAd = [[AdMoreRewardVideoAd alloc] initWithSlotID:kRewardVideoID];
+    AdMoreRewardVideoAd *rewardAd = [[AdMoreRewardVideoAd alloc] initWithSlotID:kRewardVideoID];
     
-    [AdMoreSDKManager preLoadAds:@[interstitialAd,jiFenrewardAd]];
+    [AdMoreSDKManager preLoadAds:@[splashed,interstitialAd,rewardAd]];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -84,6 +86,8 @@
     self.splashAd = [[AdMoreSplashAd alloc] initWithSlotID:kSplashID appId:kAppID ritId:kSplahRitID rootViewController:kRootViewController];
     self.splashAd.delegate = self;
     [self.splashAd loadADData];
+    
+    self.startTime = [[NSDate date] timeIntervalSince1970];
 }
 
 #pragma mark ---------------------splashAdDelegate----------------------------
@@ -91,6 +95,9 @@
 - (void)splashAdDidLoad:(AdMoreSplashAd *)splashAd
 {
     [self.splashAd showSplashAdInRootViewController:kRootViewController];
+    
+    self.endTime = [[NSDate date] timeIntervalSince1970];
+    NSLog(@"Ad:加载时间: %f",self.endTime - self.startTime);
 }
 /// 加载失败回调
 - (void)splashAd:(AdMoreSplashAd *)splashAd didFailWithError:(NSError *)error

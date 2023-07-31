@@ -29,7 +29,8 @@
     [self.view showActivityHUD];
     
     //每次都需要创建一个新的 ad 对象
-    self.bannerAd = [[AdMoreBannerAd alloc] initWithSlotID:kBannnerID rootViewController:kRootViewController adSize:CGSizeMake(HH_SCREEN_WIDTH, HH_SCREEN_WIDTH * 5)];
+    CGFloat rate = 0.5;
+    self.bannerAd = [[AdMoreBannerAd alloc] initWithSlotID:kBannnerID rootViewController:kRootViewController adSize:CGSizeMake(HH_SCREEN_WIDTH, HH_SCREEN_WIDTH * rate)];
     self.bannerAd.delegate = self;
     [self.bannerAd loadAdData];
 }
@@ -37,6 +38,7 @@
 - (void)showEvent
 {
     [self.view addSubview:self.bannerView];
+
 }
 
 /**
@@ -67,6 +69,12 @@
  */
 - (void)bannerAdDidBecomeVisible:(AdMoreBannerAd *)bannerAd bannerView:(UIView *)bannerView
 {
+    AdMoreAdInfo *adInfo = [self.bannerAd getAdInfo];
+    NSLog(@"adInfo:adnName:%@",adInfo.adnName);
+    NSLog(@"adInfo:ecpm:%@",adInfo.ecpm);
+    NSLog(@"adInfo:slotID:%@",adInfo.slotID);
+    NSLog(@"adInfo:requestID:%@",adInfo.requestID);
+    
     NSLog(@"banner:展示成功");
 }
 

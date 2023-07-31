@@ -56,6 +56,12 @@
 - (void)fullScreenInterstitiaAdPlayStart:(AdMoreFullScreenInterstitialAd *)rewardedVideoAd
 {
     NSLog(@"fullScreenInterstitiaAd:开始播放回调");
+    
+    AdMoreAdInfo *adInfo = [self.fullScreenInterstitialAd getAdInfo];
+    NSLog(@"adInfo:adnName:%@",adInfo.adnName);
+    NSLog(@"adInfo:ecpm:%@",adInfo.ecpm);
+    NSLog(@"adInfo:slotID:%@",adInfo.slotID);
+    NSLog(@"adInfo:requestID:%@",adInfo.requestID);
 }
 /**插全屏广告播放结束回调*/
 - (void)fullScreenInterstitiaAdPlayEnd:(AdMoreFullScreenInterstitialAd *)rewardedVideoAd

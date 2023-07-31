@@ -3,7 +3,7 @@
 //  AdMoreSDKDemo
 //
 //  Created by Hayder on 2023/5/16.
-//  demo只是其中一种使用方法，可以根据实际使用情况进行调整
+//  
 
 #import "AdMoreNativeAdController.h"
 #import "SCNewsContentCell.h"
@@ -12,20 +12,12 @@
 @interface AdMoreNativeAdController ()<AdMoreNativeAdDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) AdMoreNativeAd *nativeAd;
-
 //展示的数据源
 @property (nonatomic, strong) NSMutableArray *dataSource;
+//广告showView数组
 @property (nonatomic, strong) NSMutableArray *nativeShowViews;
-
-//广告对象数组，需要将每次的广告对象保存好，不然会影响单个广告View事件的回调
+//广告对象数组
 @property (nonatomic, strong) NSMutableArray *nativeAdModels;
-
-//加载成功个数
-@property (nonatomic, assign) NSInteger loadSuccessCount;
-//渲染成功个数
-@property (nonatomic, assign) NSInteger renderSuccessCount;
-//渲染失败个数
-@property (nonatomic, assign) NSInteger renderFailCount;
 
 @end
 
@@ -33,6 +25,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //加载广告
+    [self loadNativeAd];
     
     [self setUI];
     
@@ -70,8 +65,14 @@
         [self.dataSource removeAllObjects];
         [self.dataSource addObjectsFromArray:[self generateListData]];
         [self.tableView reloadData];
-        //加载广告
-        [self loadNativeAd];
+        
+        if(self.nativeShowViews.count>0) //从数组中取出广告，插入到数据源中
+        {
+            [self insertNativeAdToDataSource];
+        }else
+        {
+            [self loadNativeAd];
+        }
     });
 }
 
@@ -161,9 +162,7 @@
 /**信息流广告加载成功*/
 - (void)nativeAdViewsLoadSuccess:(NSArray *)nativeAdViews
 {
-    self.loadSuccessCount = nativeAdViews.count;
-    self.renderSuccessCount = 0;
-    self.renderFailCount = 0;
+
 }
 /**信息流广告加载失败**/
 - (void)nativeAdViewsFailedToLoadWithError:(NSError *)error
@@ -174,30 +173,27 @@
 /**信息流渲染成功---多次回调*/
 - (void)nativeAdViewRenderSuccess:(UIView *)nativeAdView
 {
-    self.renderSuccessCount += 1;
-    
     SCNewsModel *adModel = [[SCNewsModel alloc] init];
     adModel.nativeAdView = nativeAdView;
     adModel.height = nativeAdView.height;
     [self.nativeShowViews addObject:adModel];
-    
-    //证明加载完毕，可以放入数据源进行刷新
-    if(self.loadSuccessCount == self.renderSuccessCount + self.renderFailCount)
-    {
-        [self insertNativeAdToDataSource];
-    }
-    
 }
 /**信息流渲染失败*/
 - (void)nativeAdViewFailedToRender:(UIView *)nativeAdView error:(nonnull NSError *)error
 {
-    self.renderFailCount += 1;
+
 }
 
 /**信息流点击事件**/
 - (void)nativeAdViewDidClick:(UIView *)nativeAdView
 {
     NSLog(@"nativeAd:信息流点击");
+    AdMoreNativeAd *ad = [self getAdByShowView:nativeAdView];
+    AdMoreAdInfo *adInfo = [ad getAdInfoWithShowView:nativeAdView];
+    NSLog(@"adInfo:adnName:%@",adInfo.adnName);
+    NSLog(@"adInfo:ecpm:%@",adInfo.ecpm);
+    NSLog(@"adInfo:slotID:%@",adInfo.slotID);
+    NSLog(@"adInfo:requestID:%@",adInfo.requestID);
 }
 /**信息流关闭事件*/
 - (void)nativeAdViewDidClose:(UIView *)nativeAdView
@@ -220,19 +216,40 @@
 }
 
 /**视频完成播放**/
-- (void)nativeAdViewPlayerDidPlayFinish:(id)nativeAdView
+- (void)nativeAdViewPlayerDidPlayFinish:(UIView *)nativeAdView
 {
     NSLog(@"nativeAd:视频完成播放");
 }
 /**视频播放，可能回调多次，暂停->继续播放也会回调**/
-- (void)nativeAdViewVideoDidPlaying:(id)nativeAdView
+- (void)nativeAdViewVideoDidPlaying:(UIView *)nativeAdView
 {
     NSLog(@"nativeAd:视频播放");
+    
+    AdMoreNativeAd *ad = [self getAdByShowView:nativeAdView];
+    AdMoreAdInfo *adInfo = [ad getAdInfoWithShowView:nativeAdView];
+    NSLog(@"adInfo:adnName:%@",adInfo.adnName);
+    NSLog(@"adInfo:ecpm:%@",adInfo.ecpm);
+    NSLog(@"adInfo:slotID:%@",adInfo.slotID);
+    NSLog(@"adInfo:requestID:%@",adInfo.requestID);
 }
 /**视频暂停播放**/
-- (void)nativeAdViewVideoDidPause:(id)nativeAdView
+- (void)nativeAdViewVideoDidPause:(UIView *)nativeAdView
 {
     NSLog(@"nativeAd:视频暂停");
+}
+
+- (AdMoreNativeAd *)getAdByShowView:(UIView *)showView
+{
+    AdMoreNativeAd *result = nil;
+    for (AdMoreNativeAd *nativeAd in self.nativeAdModels) {
+        if([nativeAd showViewIsInCurrentAd:showView])
+        {
+            result = nativeAd;
+            continue;
+        }
+    }
+    
+    return result;
 }
 
 #pragma mark ---------------------private----------------------------
