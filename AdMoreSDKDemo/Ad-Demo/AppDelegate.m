@@ -36,6 +36,7 @@
         //等初始化成功后再使用广告
         if(isSuccess)
         {
+            //缓存广告
             [self preLoadAd];
             //开屏广告
             [self addSplashAD];
@@ -43,7 +44,6 @@
     }];
 #if DEBUG
     NSLog(@"SDKVersion：---- %@",[AdMoreSDKManager version]);
-    [AdMoreSDKManager openDebugLog:YES];
 #endif
 
     return YES;

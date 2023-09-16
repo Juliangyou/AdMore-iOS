@@ -245,6 +245,7 @@
         _collectionView.dataSource = self;
         _collectionView.pagingEnabled = YES;
         _collectionView.showsVerticalScrollIndicator = NO;
+        _collectionView.backgroundColor = UIColor.whiteColor;
         
         [_collectionView registerClass:[SCDrawAdCell class] forCellWithReuseIdentifier:@"SCDrawAdCell"];
         [_collectionView registerClass:[SCDrawContentCell class] forCellWithReuseIdentifier:@"SCDrawContentCell"];
