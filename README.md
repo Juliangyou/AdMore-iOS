@@ -232,7 +232,7 @@ SDK 不强制获取任何权限和信息，但是建议在info.plist中配置以
  初始化方法
  slotID:广告位ID
  rootViewController:根控制器，用于广告的跳转
- adSize:广告的大小 
+ adSize:广告的大小 宽高比2:1
  */
 - (instancetype)initWithSlotID:(NSString *)slotID rootViewController:(UIViewController *)rootViewController adSize:(CGSize)adSize;
 
