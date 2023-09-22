@@ -32,7 +32,24 @@
     
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[AdMoreHomeListController alloc] init]];
     
-    [AdMoreSDKManager initAdMoreSDKWithAppID:kAppID completion:^(BOOL isSuccess, NSError * _Nonnull error) {
+#if DEBUG
+    NSLog(@"SDKVersion：---- %@",[AdMoreSDKManager version]);
+    [AdMoreSDKManager openDebugLog:YES];
+#endif
+//    //方式1
+//    [AdMoreSDKManager initAdMoreSDKWithAppID:kAppID completion:^(BOOL isSuccess, NSError * _Nonnull error) {
+//        //等初始化成功后再使用广告
+//        if(isSuccess)
+//        {
+//            //缓存广告
+//            [self preLoadAd];
+//            //开屏广告
+//            [self addSplashAD];
+//        }
+//    }];
+    
+//    方式2
+    [AdMoreSDKManager initAdMoreSDKWithAppID:kAppID configPath:[[NSBundle mainBundle] pathForResource:@"config_5407557" ofType:nil] completion:^(BOOL isSuccess, NSError * _Nonnull error) {
         //等初始化成功后再使用广告
         if(isSuccess)
         {
@@ -42,21 +59,16 @@
             [self addSplashAD];
         }
     }];
-#if DEBUG
-    NSLog(@"SDKVersion：---- %@",[AdMoreSDKManager version]);
-#endif
+
 
     return YES;
 }
 
 - (void)preLoadAd
 {
-    AdMoreSplashAd *splashed = [[AdMoreSplashAd alloc] initWithSlotID:kSplashID appId:kAppID ritId:kSplahRitID rootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
-    
+    AdMoreSplashAd *splashed = [[AdMoreSplashAd alloc] initWithSlotID:kSplashID ritId:kSplahRitID rootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
     AdMoreFullScreenInterstitialAd *interstitialAd = [[AdMoreFullScreenInterstitialAd alloc] initWithSlotID:kFullScreenInterstitialID];
-    
     AdMoreRewardVideoAd *rewardAd = [[AdMoreRewardVideoAd alloc] initWithSlotID:kRewardVideoID];
-    
     [AdMoreSDKManager preLoadAds:@[splashed,interstitialAd,rewardAd]];
 }
 
@@ -83,11 +95,9 @@
 
 - (void)addSplashAD
 {
-    self.splashAd = [[AdMoreSplashAd alloc] initWithSlotID:kSplashID appId:kAppID ritId:kSplahRitID rootViewController:kRootViewController];
+    self.splashAd = [[AdMoreSplashAd alloc] initWithSlotID:kSplashID ritId:kSplahRitID rootViewController:kRootViewController];
     self.splashAd.delegate = self;
     [self.splashAd loadADData];
-    
-    self.startTime = [[NSDate date] timeIntervalSince1970];
 }
 
 #pragma mark ---------------------splashAdDelegate----------------------------

@@ -67,6 +67,7 @@
 		F02EDEF42A77A91C00264E0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F02EDED72A77A91C00264E0D /* AppDelegate.m */; };
 		F02EDEF52A77A91C00264E0D /* AdMoreHomeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F02EDEDB2A77A91C00264E0D /* AdMoreHomeListController.m */; };
 		F02EDEF62A77A91C00264E0D /* AdMoreBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = F02EDEDF2A77A91C00264E0D /* AdMoreBaseController.m */; };
+		F09B128F2ABDC53B00BBC51C /* config_5407557 in Resources */ = {isa = PBXBuildFile; fileRef = F09B128E2ABDC53B00BBC51C /* config_5407557 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -173,6 +174,7 @@
 		F02EDEDD2A77A91C00264E0D /* AdMoreGlobalDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdMoreGlobalDefine.h; sourceTree = "<group>"; };
 		F02EDEDE2A77A91C00264E0D /* AdMoreHomeListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdMoreHomeListController.h; sourceTree = "<group>"; };
 		F02EDEDF2A77A91C00264E0D /* AdMoreBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdMoreBaseController.m; sourceTree = "<group>"; };
+		F09B128E2ABDC53B00BBC51C /* config_5407557 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config_5407557; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +304,7 @@
 		F02EDEA52A77A91C00264E0D /* Ad-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				F09B128E2ABDC53B00BBC51C /* config_5407557 */,
 				F02EDEC62A77A91C00264E0D /* AdMoreBannerAdController.h */,
 				F02EDEA72A77A91C00264E0D /* AdMoreBannerAdController.m */,
 				F02EDEA92A77A91C00264E0D /* AdMoreDrawAdController.h */,
@@ -328,20 +331,20 @@
 		F02EDEAB2A77A91C00264E0D /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				F02EDEB32A77A91C00264E0D /* AdMoreCategoryHeader.h */,
+				F02EDEB82A77A91C00264E0D /* Create */,
+				F02EDEB22A77A91C00264E0D /* MBProgressHUD.h */,
 				F02EDEAC2A77A91C00264E0D /* MBProgressHUD.m */,
-				F02EDEAD2A77A91C00264E0D /* UIView+HHAdditions.m */,
-				F02EDEAE2A77A91C00264E0D /* UIView+HUD.h */,
-				F02EDEAF2A77A91C00264E0D /* UIView+Additions.m */,
+				F02EDEB62A77A91C00264E0D /* MBProgressHUD+HHExtension.h */,
 				F02EDEB02A77A91C00264E0D /* MBProgressHUD+HHExtension.m */,
 				F02EDEB12A77A91C00264E0D /* NSString+HHExtension.h */,
-				F02EDEB22A77A91C00264E0D /* MBProgressHUD.h */,
-				F02EDEB32A77A91C00264E0D /* AdMoreCategoryHeader.h */,
-				F02EDEB42A77A91C00264E0D /* UIView+HUD.m */,
-				F02EDEB52A77A91C00264E0D /* UIView+HHAdditions.h */,
-				F02EDEB62A77A91C00264E0D /* MBProgressHUD+HHExtension.h */,
-				F02EDEB72A77A91C00264E0D /* UIView+Additions.h */,
-				F02EDEB82A77A91C00264E0D /* Create */,
 				F02EDEC12A77A91C00264E0D /* NSString+HHExtension.m */,
+				F02EDEB72A77A91C00264E0D /* UIView+Additions.h */,
+				F02EDEAF2A77A91C00264E0D /* UIView+Additions.m */,
+				F02EDEB52A77A91C00264E0D /* UIView+HHAdditions.h */,
+				F02EDEAD2A77A91C00264E0D /* UIView+HHAdditions.m */,
+				F02EDEAE2A77A91C00264E0D /* UIView+HUD.h */,
+				F02EDEB42A77A91C00264E0D /* UIView+HUD.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -418,11 +421,11 @@
 		F02EDEDA2A77A91C00264E0D /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				F02EDEDB2A77A91C00264E0D /* AdMoreHomeListController.m */,
 				F02EDEDC2A77A91C00264E0D /* AdMoreBaseController.h */,
+				F02EDEDF2A77A91C00264E0D /* AdMoreBaseController.m */,
 				F02EDEDD2A77A91C00264E0D /* AdMoreGlobalDefine.h */,
 				F02EDEDE2A77A91C00264E0D /* AdMoreHomeListController.h */,
-				F02EDEDF2A77A91C00264E0D /* AdMoreBaseController.m */,
+				F02EDEDB2A77A91C00264E0D /* AdMoreHomeListController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F09B128F2ABDC53B00BBC51C /* config_5407557 in Resources */,
 				F00282BD2A0882B700DAF425 /* LaunchScreen.storyboard in Resources */,
 				F00282BA2A0882B700DAF425 /* Assets.xcassets in Resources */,
 				F00282B82A0882B600DAF425 /* Main.storyboard in Resources */,

@@ -26,7 +26,7 @@
     
     [self.view showActivityHUD];
     //每次都需要创建一个新的 ad 对象
-    self.splashAd = [[AdMoreSplashAd alloc] initWithSlotID:kSplashID appId:kAppID ritId:kSplahRitID rootViewController:kRootViewController];
+    self.splashAd = [[AdMoreSplashAd alloc] initWithSlotID:kSplashID ritId:kSplahRitID rootViewController:kRootViewController];
     self.splashAd.delegate = self;
     [self.splashAd loadADData];
 }
