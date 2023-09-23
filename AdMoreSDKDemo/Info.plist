@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>需要您的同意获取您的位置提供本地服务</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>需要您的同意获取您的位置提供本地服务</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>需要您的同意获取您的位置提供本地服务</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>请允许获取并使用您的活动跟踪，以便于向您进行个性化推送服务，从而减少无关服务对您造成的干扰</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

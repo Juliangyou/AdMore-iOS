@@ -48,8 +48,9 @@
 //        }
 //    }];
     
-//    方式2
-    [AdMoreSDKManager initAdMoreSDKWithAppID:kAppID configPath:[[NSBundle mainBundle] pathForResource:@"config_5407557" ofType:nil] completion:^(BOOL isSuccess, NSError * _Nonnull error) {
+//    方式2 测试环境path可传@""
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"config_5407557" ofType:nil];
+    [AdMoreSDKManager initAdMoreSDKWithAppID:kAppID configPath:path completion:^(BOOL isSuccess, NSError * _Nonnull error) {
         //等初始化成功后再使用广告
         if(isSuccess)
         {

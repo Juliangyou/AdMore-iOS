@@ -3,7 +3,7 @@ platform :ios, '12.0'
 
 target 'AdMoreSDKDemo' do
 
- pod 'AdMoreSDK','2.6.1'
+ pod 'AdMoreSDK','2.6.2'
  pod 'MJRefresh'
  
 end

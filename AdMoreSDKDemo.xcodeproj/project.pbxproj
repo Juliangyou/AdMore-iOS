@@ -751,8 +751,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AdMoreSDKDemo/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "需要您的同意获取您的位置提供本地服务";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "APP需要您的定位服务，否则可能无法使用";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "需要您的同意获取您的位置提供本地服务";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要您的同意获取您的位置提供本地服务";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "请允许获取并使用您的活动跟踪，以便于向您进行个性化推送服务，从而减少无关服务对您造成的干扰";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -779,7 +780,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.smartcity.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartcity.sz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -814,8 +815,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AdMoreSDKDemo/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "需要您的同意获取您的位置提供本地服务";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "APP需要您的定位服务，否则可能无法使用";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "需要您的同意获取您的位置提供本地服务";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要您的同意获取您的位置提供本地服务";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "请允许获取并使用您的活动跟踪，以便于向您进行个性化推送服务，从而减少无关服务对您造成的干扰";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -842,7 +844,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.smartcity.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartcity.sz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
